@@ -1,0 +1,44 @@
+--- KATT Example: Spotify Metadata API ---
+
+# Step 1
+
+Search for Kaizers Orcherstra tracks, and get XML results
+
+GET /search/1/track.json?q=kaizers+orchestra
+Accept: application/json
+< 200
+< Content-Type: application/json
+{
+  "info": {
+    "num_results": "{{_}}",
+    "limit": 100,
+    "offset": 0,
+    "query": "kaizers orchestra",
+    "type": "track",
+    "page": 1,
+    "{{_}}": "{{unexpected}}"
+  },
+  "tracks": [{
+    "album": {
+      "href": "{{>album_uri}}"
+    }
+  }]
+}
+
+# Step 2
+
+Get one of their albums
+
+GET /lookup/1/.json?uri={{<album_uri}}
+< 200
+< Content-Type: application/json
+{
+  "info": {
+    "type": "album",
+    "{{_}}": "{{unexpected}}"
+  },
+  "album": {
+    "artist": "Kaizers Orchestra",
+    "href": "{{<album_uri}}"
+  }
+}

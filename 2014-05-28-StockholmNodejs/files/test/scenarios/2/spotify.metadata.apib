@@ -1,0 +1,15 @@
+--- KATT Example: Spotify Metadata API ---
+
+# Step 1
+
+Search for Kaizers Orcherstra tracks, and get XML results
+
+GET /search/1/track.json?q=kaizers+orchestra
+Accept: application/json
+< 200
+< Content-Type: application/json
+{
+  "info": {
+    "query": "kaizers orchestra"
+  }
+}
